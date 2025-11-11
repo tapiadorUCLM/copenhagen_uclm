@@ -95,9 +95,18 @@ We use Rollup to compile the JS and CSS files that are used in the theme - `styl
 
 To get started:
 
-```console
-$ yarn install
-$ yarn start
+Using Corepack (recomendado con Yarn 4):
+
+```bash
+corepack yarn install
+corepack yarn start
+```
+
+Si ya tienes Yarn global instalado y activo, también puedes usar:
+
+```bash
+yarn install
+yarn start
 ```
 
 This will compile all the source code in `src` and `styles` and watch for changes. It will also start `preview`.
@@ -106,7 +115,52 @@ Notes:
 
 - We intentionally do not use babel when compiling `script.js` so we can get a clean bundle output. Make sure to only use widely supported ecmascript features (ES2015).
 - Do not edit `style.css`, `script.js` and the files inside the `assets` folder directly. They are regenerated during release.
-- Preview requires login so make sure to first run `yarn zcli login -i` if you haven't done that before.
+- Preview requires login so make sure to first run `corepack yarn zcli login -i` (o `yarn zcli login -i` si usas Yarn global) if you haven't done that before.
+
+### Yarn 4 (Berry) y Corepack
+
+Este repositorio fija `"packageManager": "yarn@4.10.3"` en `package.json`. Para evitar problemas de permisos o enlaces simbólicos globales:
+
+- No instales Yarn globalmente con `npm -g`. Usa Corepack (incluido en Node 16+).
+- Ejecuta comandos con `corepack yarn ...`.
+
+Comandos útiles:
+
+```bash
+# Verificar versión
+corepack yarn --version
+
+# Instalar dependencias
+corepack yarn install
+
+# Iniciar entorno de desarrollo (watch + preview)
+corepack yarn start
+
+# Compilar para release (sin preview)
+corepack yarn build
+```
+
+Si ves errores de permisos tipo `EACCES` al ejecutar `corepack prepare` o creando symlinks, evita `sudo` y usa siempre `corepack yarn <comando>` directamente.
+
+### Solución de problemas
+
+- Error al instalar: `No such file or directory: 'install'`
+  - Suele indicar que Yarn no está disponible en el PATH. Usa `corepack yarn install`.
+
+- `yarn start` falla con `403` al iniciar el preview:
+  - El script de `start` ejecuta `zcli themes:preview`, que requiere autenticación. Inicia sesión:
+    ```bash
+    corepack yarn zcli login -i
+    ```
+  - Verifica el perfil y permisos:
+    ```bash
+    corepack yarn zcli profiles:list
+    corepack yarn zcli profiles:use <perfil>
+    ```
+  - Si solo quieres compilar sin previsualizar mientras solucionas credenciales:
+    ```bash
+    corepack yarn build
+    ```
 
 ## Assets
 The Copenhagen theme comes with a few JavaScript assets, but you can add other assets to your theme by placing them in the `assets` folder.
