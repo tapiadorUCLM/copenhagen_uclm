@@ -1,10 +1,19 @@
 /* Request Blocks Grid - UCLM Custom Styles */
 .request-blocks-grid {
   display: grid;
+  /* For wide screens ensure exactly 3 columns if space allows */
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 24px;
   margin-top: 32px;
   margin-bottom: 32px;
+}
+
+/* Force 3-column layout when viewport has enough width (>= 992px approx) */
+@media (min-width: 992px) {
+  .request-blocks-grid {
+    /* Three fixed flexible columns for more stable layout */
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
+  }
 }
 
 .request-block {
@@ -52,24 +61,36 @@
   content: '\f109'; /* fa-laptop */
 }
 
-.request-block:has(.fa-user-graduate)::before {
-  content: '\f501'; /* fa-user-graduate */
+.request-block:has(.fa-users)::before {
+  content: '\f0c0'; /* fa-users */
 }
 
-.request-block:has(.fa-building)::before {
-  content: '\f1ad'; /* fa-building */
+.request-block:has(.fa-university)::before {
+  content: '\f19c'; /* fa-university */
 }
 
 .request-block:has(.fa-book)::before {
   content: '\f02d'; /* fa-book */
 }
 
-.request-block:has(.fa-shield-alt)::before {
-  content: '\f3ed'; /* fa-shield-alt */
+.request-block:has(.fa-euro-sign)::before {
+  content: '\f153'; /* fa-euro-sign */
 }
 
-.request-block:has(.fa-question-circle)::before {
-  content: '\f059'; /* fa-question-circle */
+.request-block:has(.fa-graduation-cap)::before {
+  content: '\f19d'; /* fa-graduation-cap */
+}
+
+.request-block:has(.fa-eye-dropper)::before {
+  content: '\f1fb'; /* fa-eye-dropper */
+}
+
+.request-block:has(.fa-building)::before {
+  content: '\f1ad'; /* fa-building */
+}
+
+.request-block:has(.fa-tools)::before {
+  content: '\f7d9'; /* fa-tools */
 }
 
 .request-block-icon {

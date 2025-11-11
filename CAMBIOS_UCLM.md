@@ -4,6 +4,29 @@ Este documento registra todos los cambios realizados en el tema de Zendesk para 
 
 ---
 
+## Versión 4.13.2.2 (11 noviembre 2025)
+
+### Tipografías del tema
+- **Archivo**: `manifest.json`
+  - Añadidas opciones de fuente: Montserrat y Roboto en `heading_font` y `text_font`
+  - Establecidos valores por defecto:
+    - Títulos (`$heading_font`): Montserrat
+    - Texto (`$text_font`): Roboto
+
+### Integración de recursos externos
+- **Archivo**: `templates/document_head.hbs`
+  - Añadidas fuentes de Google Fonts (Montserrat y Roboto) con `preconnect` y `<link rel="stylesheet">`
+
+### Estilos personalizados UCLM
+- **Archivo**: `assets/uclm-styles.css`
+  - Grid forzado a 3 columnas en ≥992px para mostrar 3 bloques por fila en escritorio
+
+### Notas técnicas
+- Sin cambios funcionales en JS; afecta configuración y estilos
+- Recomendado ejecutar build antes de publicar para asegurar `style.css`/assets actualizados
+
+---
+
 ## Versión 4.13.2.1 (11 noviembre 2025)
 
 ### Configuración del entorno de desarrollo
@@ -97,4 +120,5 @@ Este documento registra todos los cambios realizados en el tema de Zendesk para 
 
 ## Historial de versiones
 
+- **4.13.2.2** (11/11/2025) - Google Fonts + nuevas opciones tipográficas (Montserrat/Roboto) + grid 3 columnas en escritorio
 - **4.13.2.1** (11/11/2025) - Setup inicial UCLM + página selector de solicitudes + estilos personalizados
