@@ -4,6 +4,27 @@ Este documento registra todos los cambios realizados en el tema de Zendesk para 
 
 ---
 
+## Versión 4.13.2.4 (14 noviembre 2025)
+
+### Callout configurable en "Nueva solicitud"
+- **Archivo**: `manifest.json`
+  - Nueva sección `new_request_page_group_label` con variables:
+    - `show_request_callout` (checkbox) para activar/desactivar el callout
+    - `request_callout_text` (text) para definir el mensaje a mostrar
+    - `request_callout_type` (list) con opciones: `info`, `warning`, `danger` (por defecto: `info`)
+- **Archivo**: `templates/new_request_page.hbs`
+  - Renderiza un callout justo debajo del `<h1>` si está activado y con texto
+  - Usa clases `callout callout-{{settings.request_callout_type}}` y un icono SVG según el tipo
+- **Archivo**: `assets/uclm-styles.css`
+  - Estilos del callout (`.callout`, `.callout-info`, `.callout-warning`, `.callout-danger`)
+  - Diseño con border-left de 4px, fondo suave por tipo y comportamiento responsive
+
+### Notas técnicas
+- Sin cambios en JS. Los estilos residen en `assets/uclm-styles.css` (no requiere build para visualizarse en preview)
+- Recomendado ejecutar `build` antes de publicar para asegurar assets actualizados
+
+---
+
 ## Versión 4.13.2.3 (12 noviembre 2025)
 
 ### Plantilla de correo electrónico personalizada
@@ -159,6 +180,7 @@ Este documento registra todos los cambios realizados en el tema de Zendesk para 
 
 ## Historial de versiones
 
+- **4.13.2.4** (14/11/2025) - Callout configurable en Nueva solicitud (settings + template + estilos)
 - **4.13.2.3** (12/11/2025) - Plantilla de correo electrónico personalizada con branding UCLM
 - **4.13.2.2** (11/11/2025) - Google Fonts + nuevas opciones tipográficas (Montserrat/Roboto) + grid 3 columnas en escritorio
 - **4.13.2.1** (11/11/2025) - Setup inicial UCLM + página selector de solicitudes + estilos personalizados

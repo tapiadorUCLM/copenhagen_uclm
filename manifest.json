@@ -1,7 +1,7 @@
 {
   "name": "Copenhagen",
   "author": "Zendesk",
-  "version": "4.13.2.3",
+  "version": "4.13.2.4",
   "api_version": 4,
   "default_locale": "es-es",
   "settings": [
@@ -417,6 +417,46 @@
           "description": "request_list_beta_description",
           "label": "request_list_beta_label",
           "value": false
+        }
+      ]
+    },
+    {
+      "label": "new_request_page_group_label",
+      "variables": [
+        {
+          "identifier": "show_request_callout",
+          "type": "checkbox",
+          "description": "show_request_callout_description",
+          "label": "show_request_callout_label",
+          "value": false
+        },
+        {
+          "identifier": "request_callout_text",
+          "type": "text",
+          "description": "request_callout_text_description",
+          "label": "request_callout_text_label",
+          "value": ""
+        },
+        {
+          "identifier": "request_callout_type",
+          "type": "list",
+          "description": "request_callout_type_description",
+          "label": "request_callout_type_label",
+          "options": [
+            {
+              "label": "Info",
+              "value": "info"
+            },
+            {
+              "label": "Warning",
+              "value": "warning"
+            },
+            {
+              "label": "Danger",
+              "value": "danger"
+            }
+          ],
+          "value": "info"
         }
       ]
     }

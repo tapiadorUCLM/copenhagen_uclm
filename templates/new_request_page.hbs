@@ -15,6 +15,28 @@
     {{t 'submit_a_request'}}
   </h1>
 
+  {{#if settings.show_request_callout}}
+    {{#if settings.request_callout_text}}
+      <div class="callout callout-{{settings.request_callout_type}}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="callout-icon">
+          {{#is settings.request_callout_type "info"}}
+            <path fill="currentColor" d="M8 0a8 8 0 110 16A8 8 0 018 0zm0 10a1 1 0 100 2 1 1 0 000-2zm0-8a1 1 0 00-1 1v5a1 1 0 002 0V3a1 1 0 00-1-1z"/>
+          {{/is}}
+          {{#is settings.request_callout_type "warning"}}
+            <path fill="currentColor" d="M8 0a1 1 0 01.89.55l7 14A1 1 0 0115 16H1a1 1 0 01-.89-1.45l7-14A1 1 0 018 0zM7 6v4a1 1 0 002 0V6a1 1 0 00-2 0zm1 7a1 1 0 100 2 1 1 0 000-2z"/>
+          {{/is}}
+          {{#is settings.request_callout_type "danger"}}
+            <path fill="currentColor" d="M8 0a8 8 0 110 16A8 8 0 018 0zM5.75 4.25a1 1 0 00-1.5 1.5L6.5 8l-2.25 2.25a1 1 0 001.5 1.5L8 9.5l2.25 2.25a1 1 0 001.5-1.5L9.5 8l2.25-2.25a1 1 0 00-1.5-1.5L8 6.5 5.75 4.25z"/>
+          {{/is}}
+        </svg>
+        <div class="callout-body">
+          {{settings.request_callout_text}}
+        </div>
+      </div>
+    {{/if}}
+  {{/if}}
+
+
   <div id="main-content" class="form">
     <div id="new-request-form"></div>
   </div>
