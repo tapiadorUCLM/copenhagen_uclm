@@ -4,6 +4,45 @@ Este documento registra todos los cambios realizados en el tema de Zendesk para 
 
 ---
 
+## Versión 4.13.2.3 (12 noviembre 2025)
+
+### Plantilla de correo electrónico personalizada
+- **Archivo**: `plantilla_correo/plantilla_correo.html`
+  - Creada plantilla HTML responsive para notificaciones por email de Zendesk
+  - Estructura de diseño:
+    - Fondo gris claro (#f5f5f5) con contenedor blanco centrado
+    - Contenedor con box-shadow suave y esquinas redondeadas (8px)
+    - Ancho máximo 600px para compatibilidad con clientes de correo
+  - Header personalizado:
+    - Logo de la UCLM (Logo_UCLM_40.jpg desde assets)
+    - Subtítulo de instrucciones en español
+  - Secciones principales:
+    - Área de contenido para mensajes con bloques diferenciados
+    - Sección CTA (Call-to-Action) con información de contacto UCLM
+    - Footer con copyright y redes sociales
+  - Identidad corporativa:
+    - Color corporativo UCLM (#b30033) en botones, enlaces e iconos
+    - Botones de acción redondeados con estilo corporativo
+  - Integración de redes sociales:
+    - Font Awesome 5.15.4 CDN con integridad SRI
+    - Iconos de LinkedIn, X (Twitter), Facebook, Instagram, YouTube
+    - Círculos de 36px con fondo corporativo (#b30033)
+    - Centrado perfecto usando flexbox (align-items/justify-content)
+    - Enlaces a perfiles oficiales de la UCLM
+  - Información de contacto:
+    - Teléfono: 926 29 53 00
+    - Portal de soporte: soporte.uclm.es
+    - Dirección física completa
+
+### Notas técnicas
+- Plantilla HTML compatible con principales clientes de correo (Gmail, Outlook web, Apple Mail, etc.)
+- Estilos definidos en `<style>` para máxima compatibilidad
+- CDN externo para Font Awesome (soportado por la mayoría de clientes modernos)
+- Helper `{{asset}}` listo para integración con sistema de assets de Zendesk
+- Sin dependencias de JavaScript; todo CSS puro
+
+---
+
 ## Versión 4.13.2.2 (11 noviembre 2025)
 
 ### Tipografías del tema
@@ -120,5 +159,6 @@ Este documento registra todos los cambios realizados en el tema de Zendesk para 
 
 ## Historial de versiones
 
+- **4.13.2.3** (12/11/2025) - Plantilla de correo electrónico personalizada con branding UCLM
 - **4.13.2.2** (11/11/2025) - Google Fonts + nuevas opciones tipográficas (Montserrat/Roboto) + grid 3 columnas en escritorio
 - **4.13.2.1** (11/11/2025) - Setup inicial UCLM + página selector de solicitudes + estilos personalizados

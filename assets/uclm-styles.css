@@ -41,7 +41,7 @@
 .request-block::before {
   content: '';
   position: absolute;
-  left: 0;
+  right: 0;
   bottom: 0;
   width: 80px;
   height: 80px;
