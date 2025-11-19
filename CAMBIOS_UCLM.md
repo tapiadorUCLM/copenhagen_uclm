@@ -4,6 +4,71 @@ Este documento registra todos los cambios realizados en el tema de Zendesk para 
 
 ---
 
+## Versión 4.13.2.5 (19 noviembre 2025)
+
+### Mejoras de estilos en página principal
+- **Archivo**: `assets/uclm-styles.css`
+  - Añadidos estilos a `.blocks-item` para unificar apariencia con bloques de solicitud
+  - Características del diseño:
+    - Sombra inicial: `0 1px 3px rgba(0, 0, 0, 0.08)`
+    - Efecto hover: sombra más pronunciada `0 4px 12px rgba(0, 0, 0, 0.15)` con elevación `translateY(-2px)`
+    - Transiciones suaves para shadow y transform (0.3s y 0.2s respectivamente)
+    - Supresión de subrayado en hover para `.blocks-item-link`
+
+### Mejoras visuales en página de categorías
+- **Archivo**: `assets/uclm-styles.css`
+  - Bloque de descripción de categoría (`.page-header-description`):
+    - Fondo gris claro (#f8f9fa) con padding 16px/20px
+    - Borde izquierdo de 4px color #e0e0e0
+    - Border-radius 8px y márgenes verticales ajustados
+    - Color de texto #5a5a5a con line-height 1.6
+  - Tarjetas de sección (`.section-tree .section`):
+    - Fondo blanco con borde #e8e8e8 y border-radius 6px
+    - Padding 20px con sombra sutil `0 1px 3px rgba(0, 0, 0, 0.06)`
+    - Efecto hover: sombra más pronunciada y elevación de 1px
+  - Títulos de sección (`.section-tree-title`):
+    - Font-size 20px, font-weight 600, margen inferior 12px
+    - Enlaces en color #2F3941 que cambian a #1f73b7 en hover
+    - Transición suave de color (0.2s ease)
+  - Lista de artículos (`.article-list-item`):
+    - Estilo muy sutil con fondo #fafbfc
+    - Padding 8px/12px, border-radius 4px, margen 4px vertical
+    - Hover cambia fondo a #f0f2f4
+  - Enlaces de artículos (`.article-list-link`):
+    - Color #555 que cambia a #1f73b7 en hover
+    - Font-size 14px sin decoración de texto
+  - Artículos promocionados (`.article-promoted`):
+    - Destacado sutil con fondo #fff8e5
+    - Borde izquierdo de 3px color #f5a623
+    - Hover cambia fondo a #fff3d6
+  - Enlace "Ver todos" (`.see-all-articles`):
+    - Display inline-block con padding 8px/16px
+    - Fondo #f0f7ff con color #1f73b7
+    - Border-radius 4px con transiciones suaves
+    - Hover cambia a fondo #e0efff y color #0f3554
+  - Mensaje categoría vacía (`.category-empty`):
+    - Padding 20px, texto centrado, color #999
+    - Fondo #f8f9fa con borde dashed #ddd y border-radius 6px
+
+### Estilos para región de navegación
+- **Archivo**: `assets/uclm-styles.css`
+  - Región sub-nav (`.sub-nav`):
+    - Fondo #f8f9fa con padding 16px/20px
+    - Margin-bottom 24px con border-radius 6px
+    - Sombra sutil `0 1px 2px rgba(0, 0, 0, 0.05)`
+    - Borde 1px sólido #e8e8e8
+  - Responsive (<768px):
+    - Padding reducido a 12px/16px
+    - Margin-bottom reducido a 16px
+
+### Notas técnicas
+- Todos los cambios son exclusivamente CSS, no requieren build para visualizarse
+- Mantiene consistencia visual con diseño corporativo UCLM
+- Sistema de sombras y hover unificado en toda la interfaz
+- Diseño responsive con ajustes específicos para móviles (<768px)
+
+---
+
 ## Versión 4.13.2.4 (14 noviembre 2025)
 
 ### Callout configurable en "Nueva solicitud"
@@ -180,6 +245,7 @@ Este documento registra todos los cambios realizados en el tema de Zendesk para 
 
 ## Historial de versiones
 
+- **4.13.2.5** (19/11/2025) - Mejoras visuales: estilos para blocks-item, página de categorías y región sub-nav
 - **4.13.2.4** (14/11/2025) - Callout configurable en Nueva solicitud (settings + template + estilos)
 - **4.13.2.3** (12/11/2025) - Plantilla de correo electrónico personalizada con branding UCLM
 - **4.13.2.2** (11/11/2025) - Google Fonts + nuevas opciones tipográficas (Montserrat/Roboto) + grid 3 columnas en escritorio

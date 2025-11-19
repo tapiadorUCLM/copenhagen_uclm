@@ -72,5 +72,12 @@
   "text_font_description": "La fuente para el texto del cuerpo",
   "text_font_label": "Fuente de texto",
   "visited_link_color_description": "El color del texto para los elementos de los vínculos visitados",
-  "visited_link_color_label": "Color de vínculo visitado"
+  "visited_link_color_label": "Color de vínculo visitado",
+  "new_request_page_group_label": "Elementos de la página de nueva solicitud",
+  "show_request_callout_description": "Habilitar para mostrar un callout personalizado en la parte superior de la página de nueva solicitud",
+  "show_request_callout_label": "Mostrar callout en la página de nueva solicitud",
+  "request_callout_text_description": "El texto que se mostrará en el callout de la página de nueva solicitud. Puede usar HTML básico.",
+  "request_callout_text_label": "Texto del callout de solicitud",
+  "request_callout_type_description": "El estilo del callout de la página de nueva solicitud.",
+  "request_callout_type_label": "Tipo de callout de solicitud"
 }

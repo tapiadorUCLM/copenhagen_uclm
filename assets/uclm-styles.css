@@ -200,3 +200,154 @@
     font-size: 13px;
   }
 }
+
+/* Home page blocks styling - matching request-block appearance */
+.blocks-item {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.blocks-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.blocks-item-link:hover {
+  text-decoration: none;
+}
+
+/* Category page improvements */
+.page-header-description {
+  background-color: #f8f9fa;
+  padding: 16px 20px;
+  border-radius: 8px;
+  border-left: 4px solid #e0e0e0;
+  margin: 16px 0 24px;
+  color: #5a5a5a;
+  line-height: 1.6;
+}
+
+/* Section styling for better hierarchy */
+.section-tree .section {
+  background-color: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.section-tree .section:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Section title link styling */
+.section-tree-title {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.section-tree-title a {
+  color: #2F3941;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.section-tree-title a:hover {
+  color: #1f73b7;
+  text-decoration: none;
+}
+
+/* Article list subtle styling */
+.section .article-list {
+  margin-top: 12px;
+  padding-left: 0;
+}
+
+.article-list-item {
+  padding: 8px 12px;
+  margin: 4px 0;
+  border-radius: 4px;
+  background-color: #fafbfc;
+  transition: background-color 0.2s ease;
+  list-style: none;
+}
+
+.article-list-item:hover {
+  background-color: #f0f2f4;
+}
+
+.article-list-link {
+  color: #555;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.article-list-link:hover {
+  color: #1f73b7;
+  text-decoration: none;
+}
+
+/* Promoted article highlight - subtle */
+.article-promoted {
+  background-color: #fff8e5;
+  border-left: 3px solid #f5a623;
+}
+
+.article-promoted:hover {
+  background-color: #fff3d6;
+}
+
+/* See all articles link */
+.see-all-articles {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: #1f73b7;
+  background-color: #f0f7ff;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.see-all-articles:hover {
+  background-color: #e0efff;
+  color: #0f3554;
+  text-decoration: none;
+}
+
+/* Empty category message */
+.category-empty {
+  display: block;
+  padding: 20px;
+  text-align: center;
+  color: #999;
+  font-style: normal;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border: 1px dashed #ddd;
+}
+
+/* Sub-nav styling for better separation */
+.sub-nav {
+  background-color: #f8f9fa;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e8e8e8;
+}
+
+/* Responsive sub-nav */
+@media (max-width: 768px) {
+  .sub-nav {
+    padding: 12px 16px;
+    margin-bottom: 16px;
+  }
+}
