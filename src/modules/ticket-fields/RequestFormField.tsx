@@ -9,6 +9,7 @@ import { LookupField } from "./fields/LookupField";
 import { MultiSelect } from "./fields/MultiSelect";
 import { Tagger } from "./fields/Tagger";
 import { TextArea } from "./fields/textarea/TextArea";
+import { ServiceDescription } from "../new-request-form/ServiceDescription";
 
 interface RequestFormFieldProps {
   field: TicketFieldObject;
@@ -44,6 +45,13 @@ export const RequestFormField = ({
   handleChange,
   buildLookupFieldOptions,
 }: RequestFormFieldProps) => {
+  const serviceAreaIndex = visibleFields.findIndex(
+    (f) => f.label === "Área de Servicios"
+  );
+  const serviceField =
+    serviceAreaIndex !== -1 ? visibleFields[serviceAreaIndex + 1] : null;
+  const isServiceField = serviceField && field.name === serviceField.name;
+
   switch (field.type) {
     case "text":
     case "integer":
@@ -101,11 +109,16 @@ export const RequestFormField = ({
       );
     case "tagger":
       return (
-        <Tagger
-          key={field.name}
-          field={field}
-          onChange={(value) => handleChange(field, value)}
-        />
+        <>
+          <Tagger
+            key={field.name}
+            field={field}
+            onChange={(value) => handleChange(field, value)}
+          />
+          {isServiceField && (
+            <ServiceDescription selectedOption={field.value as string} />
+          )}
+        </>
       );
     case "priority":
     case "basic_priority":
