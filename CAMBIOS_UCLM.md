@@ -4,6 +4,21 @@ Este documento registra todos los cambios realizados en el tema de Zendesk para 
 
 ---
 
+## Versión 4.13.2.6 (25 noviembre 2025)
+
+### Descripciones de servicio en "Nueva solicitud"
+- **Archivo**: `src/modules/new-request-form/ServiceDescription.tsx`
+  - Nuevo componente React que muestra la descripción del servicio seleccionado.
+  - Obtiene datos del objeto personalizado `atributo_de_servicio` (campos: `etiqueta`, `descripcion`).
+  - Renderiza HTML sanitizado con `DOMPurify`.
+  - Estilos encapsulados con `styled-components`.
+
+### Notas técnicas
+- Requiere configuración del objeto personalizado `atributo_de_servicio` en Zendesk.
+- La descripción se actualiza dinámicamente al cambiar la selección del servicio.
+
+---
+
 ## Versión 4.13.2.5 (19 noviembre 2025)
 
 ### Mejoras de estilos en página principal
@@ -245,6 +260,7 @@ Este documento registra todos los cambios realizados en el tema de Zendesk para 
 
 ## Historial de versiones
 
+- **4.13.2.6** (25/11/2025) - Descripciones de servicio dinámicas en "Nueva solicitud" (React + Custom Objects)
 - **4.13.2.5** (19/11/2025) - Mejoras visuales: estilos para blocks-item, página de categorías y región sub-nav
 - **4.13.2.4** (14/11/2025) - Callout configurable en Nueva solicitud (settings + template + estilos)
 - **4.13.2.3** (12/11/2025) - Plantilla de correo electrónico personalizada con branding UCLM
