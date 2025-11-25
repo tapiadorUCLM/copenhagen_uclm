@@ -2,6 +2,13 @@
 
 Este documento registra todos los cambios realizados en el tema de Zendesk para la UCLM antes de cada subida a GitHub.
 
+## Versión 4.13.2.7 (25 noviembre 2025)
+
+### Descripción de actualización
+
+- Reseteamos los cambios realizados en la versión 4.13.2.6. con el que se 
+  intentaron añadir descripciones en los servicios. 
+
 ---
 
 ## Versión 4.13.2.6 (25 noviembre 2025)
