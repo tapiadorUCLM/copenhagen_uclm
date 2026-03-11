@@ -14,6 +14,17 @@
   </div>
 </section>
 
+{{#if settings.show_home_notice}}
+  {{#if settings.home_notice_text}}
+    <section class="home-notice-wrap" aria-label="Aviso destacado">
+      <div class="home-notice home-notice--{{settings.home_notice_type}}" role="status">
+        <span class="home-notice__badge">Aviso</span>
+        <p class="home-notice__text">{{settings.home_notice_text}}</p>
+      </div>
+    </section>
+  {{/if}}
+{{/if}}
+
 <div class="container">
   <section class="section knowledge-base">
     <h2>Buscar artículos de ayuda y documentación por área</h2>

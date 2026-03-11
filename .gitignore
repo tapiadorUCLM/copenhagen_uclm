@@ -5,7 +5,13 @@ node_modules/
 *.DS_Store
 coverage/
 .idea/
-
+.devcontainer/
+.vscode/
+dist/
+build/
+.env
+.env.local
+.env.*.local
 # yarn
 .yarn/*
 !.yarn/cache

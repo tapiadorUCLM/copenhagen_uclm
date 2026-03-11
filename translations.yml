@@ -229,6 +229,36 @@ parts:
       screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
       value: "Show recent activity on home page"
   - translation:
+      key: "txt.help_center_copenhagen_theme.show_home_notice_label"
+      title: "Label for the show home notice setting"
+      screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
+      value: "Mostrar aviso destacado"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.show_home_notice_description"
+      title: "Description for the show home notice setting"
+      screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
+      value: "Muestra un aviso destacado debajo del bloque principal de la portada"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.home_notice_text_label"
+      title: "Label for the home notice text setting"
+      screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
+      value: "Texto del aviso destacado"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.home_notice_text_description"
+      title: "Description for the home notice text setting"
+      screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
+      value: "Mensaje principal que se mostrará dentro del aviso destacado"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.home_notice_type_label"
+      title: "Label for the home notice type setting"
+      screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
+      value: "Estilo del aviso destacado"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.home_notice_type_description"
+      title: "Description for the home notice type setting"
+      screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
+      value: "Elige la variante de color del aviso destacado"
+  - translation:
       key: "txt.help_center_copenhagen_theme.article_page_group_label"
       title: "Label for the article page elements settings group"
       screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"

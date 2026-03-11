@@ -2,6 +2,39 @@
 
 Este documento registra todos los cambios realizados en el tema de Zendesk para la UCLM antes de cada subida a GitHub.
 
+## Versión 4.13.3 (11 marzo 2026)
+
+### Aviso configurable en la página principal
+- **Archivo**: `manifest.json`
+  - Actualizada la versión del tema a `4.13.3`.
+  - Añadidas nuevas variables dentro de `home_page_group_label`:
+    - `show_home_notice` para activar o desactivar el aviso destacado.
+    - `home_notice_text` para definir el texto del aviso.
+    - `home_notice_type` para elegir la variante visual: `info`, `warning` o `danger`.
+
+- **Archivo**: `templates/home_page.hbs`
+  - Insertado un bloque de aviso justo después de la sección `hero`.
+  - El aviso solo se renderiza cuando está activado y tiene contenido.
+  - Se aplica una clase dinámica según el tipo seleccionado en settings.
+
+- **Archivo**: `styles/_home-page.scss`
+  - Añadidos estilos específicos para `.home-notice` y sus variantes.
+  - Diseño visual mejorado respecto a un alert básico:
+    - borde lateral destacado
+    - badge superior
+    - fondo con degradado suave
+    - variantes cromáticas para información, advertencia y error
+
+- **Archivo**: `translations.yml`
+  - Añadidas etiquetas y descripciones para los nuevos ajustes del aviso en Theme settings.
+
+### Notas técnicas
+- Build ejecutado correctamente tras los cambios.
+- La compilación regeneró `style.css` con los nuevos estilos del aviso.
+- Persisten warnings TypeScript preexistentes en módulos React no relacionados con esta funcionalidad.
+
+---
+
 ## Versión 4.13.2.7 (25 noviembre 2025)
 
 ### Descripción de actualización
