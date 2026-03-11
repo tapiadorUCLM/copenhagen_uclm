@@ -79,5 +79,15 @@
   "request_callout_text_description": "El texto que se mostrará en el callout de la página de nueva solicitud. Puede usar HTML básico.",
   "request_callout_text_label": "Texto del callout de solicitud",
   "request_callout_type_description": "El estilo del callout de la página de nueva solicitud.",
-  "request_callout_type_label": "Tipo de callout de solicitud"
+  "request_callout_type_label": "Tipo de callout de solicitud",
+  "show_home_notice_description": "Mostrar un aviso en la página principal para los usuarios que no han iniciado sesión",
+  "show_home_notice_label": "Mostrar aviso en la página principal",
+  "home_notice_text_label": "Texto del aviso en la página principal",
+  "home_notice_text_description": "El texto del aviso que se muestra en la página principal para los usuarios que no han iniciado sesión.",
+  "home_notice_type_label": "Tipo de aviso en la página principal",
+  "home_notice_type_description": "El tipo de aviso que se muestra en la página principal para los usuarios que no han iniciado sesión. El aviso de información se muestra con un fondo azul claro, el aviso de advertencia se muestra con un fondo amarillo claro y el aviso de error se muestra con un fondo rojo claro.",
+  "home_notice_button_text_label": "Texto del botón del aviso en la página principal",
+  "home_notice_button_text_description": "El texto del botón que se muestra en el aviso de la página principal para los usuarios que no han iniciado sesión. Se muestra solo si se proporciona el texto del botón.",
+  "home_notice_button_url_label": "URL del botón del aviso en la página principal",
+  "home_notice_button_url_description": "La URL a la que se redirige al hacer clic en el botón del aviso de la página principal para los usuarios que no han iniciado sesión."
 }

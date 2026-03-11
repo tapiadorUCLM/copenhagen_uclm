@@ -18,8 +18,13 @@
   {{#if settings.home_notice_text}}
     <section class="home-notice-wrap" aria-label="Aviso destacado">
       <div class="home-notice home-notice--{{settings.home_notice_type}}" role="status">
-        <span class="home-notice__badge">Aviso</span>
-        <p class="home-notice__text">{{settings.home_notice_text}}</p>
+        <div class="home-notice__content">
+          <span class="home-notice__badge">Aviso</span>
+          <p class="home-notice__text">{{settings.home_notice_text}}</p>
+        </div>
+        {{#if settings.home_notice_button_text}}
+          <a href="{{settings.home_notice_button_url}}" class="home-notice__button">{{settings.home_notice_button_text}}</a>
+        {{/if}}
       </div>
     </section>
   {{/if}}

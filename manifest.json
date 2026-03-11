@@ -1,7 +1,7 @@
 {
   "name": "Copenhagen",
   "author": "Zendesk",
-  "version": "4.13.3",
+  "version": "4.13.3.1",
   "api_version": 4,
   "default_locale": "es-es",
   "settings": [
@@ -343,6 +343,20 @@
             }
           ],
           "value": "info"
+        },
+        {
+          "identifier": "home_notice_button_text",
+          "type": "text",
+          "description": "home_notice_button_text_description",
+          "label": "home_notice_button_text_label",
+          "value": ""
+        },
+        {
+          "identifier": "home_notice_button_url",
+          "type": "text",
+          "description": "home_notice_button_url_description",
+          "label": "home_notice_button_url_label",
+          "value": ""
         }
       ]
     },

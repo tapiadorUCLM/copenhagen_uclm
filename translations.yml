@@ -259,6 +259,26 @@ parts:
       screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
       value: "Elige la variante de color del aviso destacado"
   - translation:
+      key: "txt.help_center_copenhagen_theme.home_notice_button_text_label"
+      title: "Label for the home notice button text setting"
+      screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
+      value: "Texto del botón"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.home_notice_button_text_description"
+      title: "Description for the home notice button text setting"
+      screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
+      value: "Texto que aparecerá en el botón CTA (dejar vacío para no mostrar botón)"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.home_notice_button_url_label"
+      title: "Label for the home notice button URL setting"
+      screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
+      value: "URL del botón"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.home_notice_button_url_description"
+      title: "Description for the home notice button URL setting"
+      screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
+      value: "Dirección web (URL) a la que dirige el botón al hacer clic"
+  - translation:
       key: "txt.help_center_copenhagen_theme.article_page_group_label"
       title: "Label for the article page elements settings group"
       screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"

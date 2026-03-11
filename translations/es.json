@@ -72,5 +72,15 @@
   "text_font_description": "La fuente para el texto del cuerpo",
   "text_font_label": "Fuente de texto",
   "visited_link_color_description": "El color del texto para los elementos de los vínculos visitados",
-  "visited_link_color_label": "Color de vínculo visitado"
+  "visited_link_color_label": "Color de vínculo visitado",
+  "show_home_notice_description": "Mostrar un aviso en la página principal para los usuarios que no han iniciado sesión",
+  "show_home_notice_label": "Mostrar aviso en la página principal",
+  "home_notice_text_label": "Texto del aviso en la página principal",
+  "home_notice_text_description": "El texto del aviso que se muestra en la página principal para los usuarios que no han iniciado sesión.",
+  "home_notice_type_label": "Tipo de aviso en la página principal",
+  "home_notice_type_description": "El tipo de aviso que se muestra en la página principal para los usuarios que no han iniciado sesión. El aviso de información se muestra con un fondo azul claro, el aviso de advertencia se muestra con un fondo amarillo claro y el aviso de error se muestra con un fondo rojo claro.",
+  "home_notice_button_text_label": "Texto del botón del aviso en la página principal",
+  "home_notice_button_text_description": "El texto del botón que se muestra en el aviso de la página principal para los usuarios que no han iniciado sesión. Se muestra solo si se proporciona el texto del botón.",
+  "home_notice_button_url_label": "URL del botón del aviso en la página principal",
+  "home_notice_button_url_description": "La URL a la que se redirige al hacer clic en el botón del aviso de la página principal para los usuarios que no han iniciado sesión."
 }

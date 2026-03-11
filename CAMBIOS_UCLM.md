@@ -2,35 +2,50 @@
 
 Este documento registra todos los cambios realizados en el tema de Zendesk para la UCLM antes de cada subida a GitHub.
 
-## Versión 4.13.3 (11 marzo 2026)
+## Versión 4.13.3 y 4.13.3.1 (11 marzo 2026)
 
-### Aviso configurable en la página principal
+### Aviso configurable con CTA en la página principal
 - **Archivo**: `manifest.json`
   - Actualizada la versión del tema a `4.13.3`.
   - Añadidas nuevas variables dentro de `home_page_group_label`:
     - `show_home_notice` para activar o desactivar el aviso destacado.
     - `home_notice_text` para definir el texto del aviso.
     - `home_notice_type` para elegir la variante visual: `info`, `warning` o `danger`.
+    - `home_notice_button_text` para definir el texto del botón CTA (opcional).
+    - `home_notice_button_url` para definir la URL del botón CTA (opcional).
 
 - **Archivo**: `templates/home_page.hbs`
   - Insertado un bloque de aviso justo después de la sección `hero`.
   - El aviso solo se renderiza cuando está activado y tiene contenido.
   - Se aplica una clase dinámica según el tipo seleccionado en settings.
+  - Estructura interna mejorada con `.home-notice__content` para organizar contenido y botón.
+  - Botón CTA renderizado condicionalmente cuando existe texto y URL definidos.
 
 - **Archivo**: `styles/_home-page.scss`
   - Añadidos estilos específicos para `.home-notice` y sus variantes.
   - Diseño visual mejorado respecto a un alert básico:
-    - borde lateral destacado
-    - badge superior
-    - fondo con degradado suave
-    - variantes cromáticas para información, advertencia y error
+    - Layout flexbox para alinear contenido y botón horizontalmente
+    - Badge superior con estilos tipográficos profesionales
+    - Fondo con degradado suave y variantes cromáticas
+  - Botón CTA (`.home-notice__button`) con:
+    - Padding interior proporcionado
+    - Bordes redondeados coherentes
+    - Color de fondo y texto que varía según el tipo (info/warning/danger)
+    - Efectos hover con elevación y sombra mejorada
+    - Transiciones suaves (0.2s ease)
+    - Material design: respuesta visual al hacer clic (transform: translateY)
 
 - **Archivo**: `translations.yml`
   - Añadidas etiquetas y descripciones para los nuevos ajustes del aviso en Theme settings.
+  - Traducciones para los parámetros del botón CTA:
+    - Texto del botón (label y description)
+    - URL del botón (label y description)
 
 ### Notas técnicas
 - Build ejecutado correctamente tras los cambios.
-- La compilación regeneró `style.css` con los nuevos estilos del aviso.
+- La compilación regeneró `style.css` con los nuevos estilos del aviso y del botón.
+- Layout del aviso utiliza flexbox moderno para alineación responsive.
+- Botón solo se renderiza cuando tiene texto definido en settings (validación condicional en template).
 - Persisten warnings TypeScript preexistentes en módulos React no relacionados con esta funcionalidad.
 
 ---
