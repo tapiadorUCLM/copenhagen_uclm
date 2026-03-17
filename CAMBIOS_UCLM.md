@@ -2,6 +2,35 @@
 
 Este documento registra todos los cambios realizados en el tema de Zendesk para la UCLM antes de cada subida a GitHub.
 
+## Versión 4.13.4 (17 marzo 2026)
+
+### Nueva página de solicitud asistida por agente IA (modo embedded)
+- **Archivo**: `templates/custom_pages/new_request_agent.hbs`
+  - Creada estructura de página similar a `new_request_page.hbs` con:
+    - Breadcrumbs y buscador en la subnavegación.
+    - Título y texto introductorio para guiar al usuario.
+    - Reutilización del callout configurable (`show_request_callout`, `request_callout_text`, `request_callout_type`).
+  - Añadido layout de asistencia con dos áreas:
+    - Panel lateral con acciones del usuario.
+    - Contenedor principal del widget (`#new-request-agent-widget`).
+  - Integrado Zendesk Messaging en **embedded mode**:
+    - Desactivación de autorender con `window.zEMessenger.autorender = false`.
+    - Render explícito con `zE('messenger', 'render', { mode: 'embedded', widget: { targetElement: '#new-request-agent-widget' } })`.
+    - Lógica de espera/reintento hasta disponibilidad de `zE` para evitar errores de carga por timing.
+  - Añadido botón para iniciar conversación programáticamente:
+    - `zE('messenger:ui', 'newConversation', { metadata: ... })`.
+    - Incluye metadatos de contexto (`source`, `locale`, `userRole`).
+  - Añadido CTA para abrir el flujo estándar de ticket en `{{page_path 'new_request'}}`.
+  - Añadidos estilos inline específicos de esta página para:
+    - Composición responsive del layout.
+    - Altura mínima del contenedor embedded.
+    - Bloques visuales del panel y zona de widget.
+
+### Notas técnicas
+- La implementación sigue la guía oficial de Zendesk para Web Widget embedded mode.
+- En embedded mode no se debe mezclar render floating y embedded en la misma página.
+- Si el snippet global del widget se carga antes de esta plantilla, conviene garantizar que `autorender: false` se aplique antes de su inicialización.
+
 ## Versión 4.13.3 y 4.13.3.1 (11 marzo 2026)
 
 ### Aviso configurable con CTA en la página principal

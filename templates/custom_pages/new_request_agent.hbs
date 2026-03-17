@@ -1,0 +1,170 @@
+<div class="container-divider"></div>
+<div class="container">
+	<div class="sub-nav">
+		{{breadcrumbs}}
+		<div class="search-container">
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+				<circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
+				<path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+			</svg>
+			{{search submit=false}}
+		</div>
+	</div>
+
+	<h1>
+		Agente IA de soporte
+	</h1>
+
+	{{#if settings.show_request_callout}}
+		{{#if settings.request_callout_text}}
+			<div class="callout callout-{{settings.request_callout_type}}">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="callout-icon">
+					{{#is settings.request_callout_type "info"}}
+						<path fill="currentColor" d="M8 0a8 8 0 110 16A8 8 0 018 0zm0 10a1 1 0 100 2 1 1 0 000-2zm0-8a1 1 0 00-1 1v5a1 1 0 002 0V3a1 1 0 00-1-1z"/>
+					{{/is}}
+					{{#is settings.request_callout_type "warning"}}
+						<path fill="currentColor" d="M8 0a1 1 0 01.89.55l7 14A1 1 0 0115 16H1a1 1 0 01-.89-1.45l7-14A1 1 0 018 0zM7 6v4a1 1 0 002 0V6a1 1 0 00-2 0zm1 7a1 1 0 100 2 1 1 0 000-2z"/>
+					{{/is}}
+					{{#is settings.request_callout_type "danger"}}
+						<path fill="currentColor" d="M8 0a8 8 0 110 16A8 8 0 018 0zM5.75 4.25a1 1 0 00-1.5 1.5L6.5 8l-2.25 2.25a1 1 0 001.5 1.5L8 9.5l2.25 2.25a1 1 0 001.5-1.5L9.5 8l2.25-2.25a1 1 0 00-1.5-1.5L8 6.5 5.75 4.25z"/>
+					{{/is}}
+				</svg>
+				<div class="callout-body">
+					{{settings.request_callout_text}}
+				</div>
+			</div>
+		{{/if}}
+	{{/if}}
+
+	<p class="page-intro">
+		Describe tu incidencia al agente. Si no queda resuelta, puedes crear un ticket con un solo clic.
+	</p>
+
+	<div id="main-content" class="form">
+		<div class="agent-assistant-layout">
+			<div class="agent-assistant-panel">
+				<h2>Conversa con el agente</h2>
+				<p>
+					El chat esta integrado en esta pagina en modo embedded para ayudarte antes de abrir un ticket.
+				</p>
+
+				<div class="agent-assistant-actions">
+					<button id="new-agent-conversation" class="button button-primary" type="button">
+						Iniciar nueva conversacion
+					</button>
+					<a class="button" href="{{page_path 'new_request'}}">
+						Crear ticket nuevo
+					</a>
+				</div>
+			</div>
+
+			<div class="agent-assistant-widget-wrapper">
+				<div id="new-request-agent-widget" aria-label="Widget de asistencia con IA"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.page-intro {
+		margin-bottom: 1.5rem;
+	}
+
+	.agent-assistant-layout {
+		display: grid;
+		gap: 1rem;
+		grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+	}
+
+	.agent-assistant-panel,
+	.agent-assistant-widget-wrapper {
+		border: 1px solid var(--hc-border-color, #d8dcde);
+		border-radius: 8px;
+		background: #fff;
+		padding: 1rem;
+	}
+
+	.agent-assistant-panel h2 {
+		margin-top: 0;
+	}
+
+	.agent-assistant-actions {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		margin-top: 1rem;
+	}
+
+	#new-request-agent-widget {
+		min-height: 640px;
+	}
+
+	@media (max-width: 991px) {
+		.agent-assistant-layout {
+			grid-template-columns: 1fr;
+		}
+
+		#new-request-agent-widget {
+			min-height: 560px;
+		}
+	}
+</style>
+
+<script>
+	window.zEMessenger = window.zEMessenger || {};
+	window.zEMessenger.autorender = false;
+</script>
+
+<script>
+	(function () {
+		const widgetSelector = "#new-request-agent-widget";
+		const startConversationButton = document.getElementById("new-agent-conversation");
+		const maxWaitCycles = 60;
+		let waitCycles = 0;
+
+		function hasContainer() {
+			return Boolean(document.querySelector(widgetSelector));
+		}
+
+		function renderEmbeddedWidget() {
+			if (!hasContainer() || typeof window.zE !== "function") {
+				return false;
+			}
+
+			window.zE("messenger", "render", {
+				mode: "embedded",
+				widget: {
+					targetElement: widgetSelector
+				}
+			});
+
+			return true;
+		}
+
+		if (!renderEmbeddedWidget()) {
+			const waitForZendesk = setInterval(function () {
+				waitCycles += 1;
+
+				if (renderEmbeddedWidget() || waitCycles >= maxWaitCycles) {
+					clearInterval(waitForZendesk);
+				}
+			}, 250);
+		}
+
+		if (startConversationButton) {
+			startConversationButton.addEventListener("click", function () {
+				if (typeof window.zE !== "function") {
+					return;
+				}
+
+				window.zE("messenger:ui", "newConversation", {
+					metadata: {
+						source: "new_request_agent",
+						locale: {{json help_center.locale}},
+						userRole: {{json user.role}}
+					}
+				});
+			});
+		}
+	})();
+</script>
