@@ -89,5 +89,7 @@
   "home_notice_button_text_label": "Texto del botón del aviso en la página principal",
   "home_notice_button_text_description": "El texto del botón que se muestra en el aviso de la página principal para los usuarios que no han iniciado sesión. Se muestra solo si se proporciona el texto del botón.",
   "home_notice_button_url_label": "URL del botón del aviso en la página principal",
-  "home_notice_button_url_description": "La URL a la que se redirige al hacer clic en el botón del aviso de la página principal para los usuarios que no han iniciado sesión."
+  "home_notice_button_url_description": "La URL a la que se redirige al hacer clic en el botón del aviso de la página principal para los usuarios que no han iniciado sesión.",
+  "article_toc_description": "Mostrar la tabla de contenido del artículo",
+  "article_toc_label": "Tabla de contenido del artículo"
 }

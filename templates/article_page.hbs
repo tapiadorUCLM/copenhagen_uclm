@@ -325,5 +325,175 @@
         </div>
       {{/if}}
     </article>
+
+    <aside class="article-sidebar" aria-labelledby="section-article-">
+      {{#if settings.show_article_toc}}
+        <div id="custom-toc-wrapper" style="background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; margin: 24px 0;">
+          <div style="display: flex; align-items: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #dee2e6;">
+            <span style="font-size: 16px; margin-right: 8px; color: #495057;">☰</span><span style="color: #212529; font-size: 15px; font-weight: 500;">En este artículo</span>
+          </div>
+          <div id="custom-toc-list" style="margin: 0; padding: 0;">
+            <p style="color: #999; font-style: italic; margin: 0; font-size: 14px;">Cargando índice...</p>
+          </div>
+        </div>
+        <script>
+        (function() {
+          'use strict';
+          
+          function buildTOC() {
+            try {
+              const tocWrapper = document.getElementById('custom-toc-wrapper');
+              const tocList = document.getElementById('custom-toc-list');
+              
+              if (!tocWrapper || !tocList) {
+                console.log('TOC: Contenedores no encontrados');
+                return false;
+              }
+
+              const mainContent = document.getElementById('main-content') || 
+                                document.querySelector('article') ||
+                                document.querySelector('.article-body');
+              
+              if (!mainContent) {
+                console.log('TOC: main-content no encontrado');
+                tocList.innerHTML = '<p style="color: #999; margin: 0; font-size: 14px;">No se pudo cargar el índice</p>';
+                return false;
+              }
+
+              const allHeadings = Array.from(mainContent.querySelectorAll('h2, h3, h4, h5'));
+              
+              const excludeTitles = [
+                'Tabla de contenidos',
+                'En este artículo',
+                '¿Fue útil este artículo?',
+                'Artículos recién vistos',
+                'Artículos relacionados',
+                'Relacionada con'
+              ];
+              
+              const headings = allHeadings.filter(h => {
+                const text = h.textContent.trim();
+                const isInTOC = h.closest('#custom-toc-wrapper');
+                const isExcluded = excludeTitles.some(title => text.includes(title));
+                return !isInTOC && !isExcluded && text.length > 0;
+              });
+
+              console.log('TOC: Encontrados ' + headings.length + ' headings');
+
+              if (headings.length === 0) {
+                tocWrapper.style.display = 'none';
+                return false;
+              }
+
+              let html = '<div style="margin: 0; padding: 0;">';
+              
+              headings.forEach((heading) => {
+                const level = parseInt(heading.tagName.charAt(1));
+                const text = heading.textContent.trim();
+                const id = heading.id || ('toc-heading-' + Math.random().toString(36).substr(2, 9));
+                
+                if (!heading.id) {
+                  heading.id = id;
+                }
+                
+                // Configuración por nivel
+                let indent = 0;
+                let fontSize = '15px';
+                let color = '#495057';
+                let hoverColor = '#b30033';
+                let borderWidth = '0px';
+                let paddingLeft = '0px';
+                
+                if (level === 2) {
+                  indent = 0;
+                  fontSize = '15px';
+                  color = '#495057';
+                  borderWidth = '0px';
+                  paddingLeft = '0px';
+                } else if (level === 3) {
+                  indent = 0;
+                  fontSize = '14px';
+                  color = '#6c757d';
+                  borderWidth = '2px';
+                  paddingLeft = '16px';
+                } else if (level === 4) {
+                  indent = 0;
+                  fontSize = '13px';
+                  color = '#868e96';
+                  borderWidth = '1.5px';
+                  paddingLeft = '32px';
+                } else if (level === 5) {
+                  indent = 0;
+                  fontSize = '12px';
+                  color = '#adb5bd';
+                  borderWidth = '1px';
+                  paddingLeft = '48px';
+                }
+                
+                html += '<div style="margin-bottom: ' + (level === 2 ? '8px' : '6px') + '; position: relative;">';
+                
+                // Línea vertical para niveles > 2
+                if (level > 2) {
+                  html += '<div style="position: absolute; left: ' + (parseInt(paddingLeft) - 8) + 'px; top: 0; bottom: 0; width: ' + borderWidth + '; background-color: #dee2e6;"></div>';
+                }
+                
+                html += '<a href="#' + id + '" ';
+                html += 'style="color: ' + color + '; text-decoration: none; display: block; font-size: ' + fontSize + '; line-height: 1.6; transition: color 0.2s ease; padding: 2px 0; padding-left: ' + paddingLeft + ';" ';
+                html += 'onmouseover="this.style.color=\'' + hoverColor + '\';" ';
+                html += 'onmouseout="this.style.color=\'' + color + '\';" ';
+                html += 'onclick="event.preventDefault(); document.getElementById(\'' + id + '\').scrollIntoView({behavior: \'smooth\', block: \'start\'}); history.pushState(null, null, \'#' + id + '\');">';
+                html += text;
+                html += '</a>';
+                html += '</div>';
+              });
+              
+              html += '</div>';
+              tocList.innerHTML = html;
+              
+              console.log('TOC: Generado correctamente');
+              return true;
+              
+            } catch (error) {
+              console.error('TOC Error:', error);
+              return false;
+            }
+          }
+
+          let attempts = 0;
+          const maxAttempts = 10;
+          
+          function tryBuildTOC() {
+            attempts++;
+            console.log('TOC: Intento #' + attempts);
+            
+            if (buildTOC()) {
+              console.log('TOC: Éxito en intento #' + attempts);
+              return;
+            }
+            
+            if (attempts < maxAttempts) {
+              setTimeout(tryBuildTOC, 200);
+            } else {
+              console.log('TOC: Fallaron todos los intentos');
+              const tocList = document.getElementById('custom-toc-list');
+              if (tocList) {
+                tocList.innerHTML = '<p style="color: #999; margin: 0; font-size: 14px;">No se pudieron cargar los encabezados</p>';
+              }
+            }
+          }
+
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+              setTimeout(tryBuildTOC, 100);
+            });
+          } else {
+            setTimeout(tryBuildTOC, 100);
+          }
+          
+        })();
+        </script>
+      {{/if}}
+    </aside>
+
   </div>
 </div>

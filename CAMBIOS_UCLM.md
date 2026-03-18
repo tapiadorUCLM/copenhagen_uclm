@@ -2,6 +2,29 @@
 
 Este documento registra todos los cambios realizados en el tema de Zendesk para la UCLM antes de cada subida a GitHub.
 
+## Versión 4.13.4.2 (18 marzo 2026)
+
+### Refinado funcional y visual de la página de agente IA
+- **Archivo**: `templates/custom_pages/new_request_agent.hbs`
+  - Ajustada la cabecera de navegación de la página:
+    - Breadcrumbs personalizados con ruta fija para contexto UCLM.
+    - Título principal actualizado a **"Enviar una solicitud"** para alinearlo con el flujo estándar.
+  - Mantenida la distribución conversacional en dos paneles con proporción **25% / 75%**:
+    - Lista de conversaciones en `#conversation-sidebar`.
+    - Conversación activa en `#messages-sidebar`.
+  - Pulido de estilo y dimensiones de paneles:
+    - Se mantiene estética moderna de tarjetas (degradados, borde, sombra, tipografía).
+    - Altura mínima de paneles ajustada para equilibrar densidad visual en escritorio.
+  - Ajustes de comportamiento del widget embebido:
+    - Se conservan componentes separados (`conversationList` + `messageLog`).
+    - Cabeceras nativas del widget ocultas en ambos paneles para una integración más limpia.
+    - Apertura de conversación inicial mediante `zE('messenger:ui', 'newConversation', ...)`.
+
+### Notas técnicas
+- Se mantiene `window.zEMessenger.autorender = false` para forzar modo embedded.
+- No hay cambios en `manifest.json` ni en el formulario estándar `new_request_page.hbs`.
+- Cambios acotados a plantilla personalizada del agente IA.
+
 ## Versión 4.13.4.1 (18 marzo 2026)
 
 ### Ajustes finales de la página del agente IA embebido

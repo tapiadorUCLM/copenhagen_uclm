@@ -14,6 +14,10 @@
     {{t 'submit_a_request'}}
   </h1>
 
+	<p class="page-intro">
+		Selecciona una de las áreas de gestión para enviar tu solicitud. Pulsando en una de ellas, accederás a un formulario específico que te permitirá describir tu incidencia o consulta de manera detallada. Si no estás seguro de qué área es la más adecuada para tu solicitud, puedes preguntar a <a href="/hc/es/p/new_request_agent">nuestro asistente de IA</a>.
+	</p>
+
   <div id="main-content" class="form">
 
   <div class="request-blocks-grid">
@@ -90,6 +94,38 @@
     </a>
   </div>
 
+<style>
+:root {
+		--agent-surface: #ffffff;
+		--agent-border: #d9dee3;
+		--agent-text: #1f2a35;
+		--agent-muted: #5b6b78;
+		--agent-shadow: 0 18px 40px rgba(26, 39, 57, 0.12);
+	}
+
+  div#main-content.form {
+  	max-width: 100%;
+  }
+  
+	.page-intro {
+		margin-bottom: 1.5rem;
+		color: var(--agent-muted);
+	}
+
+	.request-blocks-grid {
+		padding: 1rem;
+		border-radius: 16px;
+		background:
+			radial-gradient(circle at top right, rgba(179, 0, 51, 0.1), rgba(179, 0, 51, 0) 35%),
+			linear-gradient(145deg, #f6f8fa 0%, #eef2f6 100%);
+	}
+
+	@media (max-width: 991px) {
+		.request-blocks-grid {
+			padding: 0.75rem;
+		}
+	}
+</style>
 
 </div>
 

@@ -1,7 +1,7 @@
 {
   "name": "Copenhagen",
   "author": "Zendesk",
-  "version": "4.13.4.1",
+  "version": "4.13.4.2",
   "api_version": 4,
   "default_locale": "es-es",
   "settings": [
@@ -369,6 +369,13 @@
           "description": "articles_in_section_description",
           "label": "articles_in_section_label",
           "value": true
+        },
+        {
+          "identifier": "show_article_toc",
+          "type": "checkbox",
+          "description": "article_toc_description",
+          "label": "article_toc_label",
+          "value": false
         },
         {
           "identifier": "show_article_author",
