@@ -1,7 +1,16 @@
 <div class="container-divider"></div>
 <div class="container">
 	<div class="sub-nav">
-		{{breadcrumbs}}
+    <nav aria-label="Ubicación actual">
+      <ol class="breadcrumbs">
+        <li>
+          <a href="/hc/es">Universidad de Castilla-La Mancha</a>
+        </li>
+        <li>
+        	<a href="#" aria-current="page">Enviar una solicitud</a>
+        </li>
+      </ol>
+		</nav>
 		<div class="search-container">
 			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
 				<circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
@@ -12,7 +21,7 @@
 	</div>
 
 	<h1>
-		Agente IA de soporte
+		Enviar una solicitud
 	</h1>
 
 	{{#if settings.show_request_callout}}
@@ -37,134 +46,162 @@
 	{{/if}}
 
 	<p class="page-intro">
-		Describe tu incidencia al agente. Si no queda resuelta, puedes crear un ticket con un solo clic.
+		Describe tu incidencia al agente de IA. Si no queda resuelta, puedes crear un ticket al finalizar la conversación.
 	</p>
 
-	<div id="main-content" class="form">
-		<div class="agent-assistant-layout">
-			<div class="agent-assistant-panel">
-				<h2>Conversa con el agente</h2>
-				<p>
-					El chat esta integrado en esta pagina en modo embedded para ayudarte antes de abrir un ticket.
-				</p>
+  	<div id="main-content" class="form">
+		<div class="agent-assistant-shell">
+			<div class="agent-assistant-layout">
+				<aside class="agent-panel agent-panel-list" aria-label="Panel de conversaciones">
+					<div class="agent-panel-header">
+						<h2>Conversaciones</h2>
+					</div>
+					<div id="conversation-sidebar" class="agent-panel-body" aria-label="Lista de conversaciones"></div>
+				</aside>
 
-				<div class="agent-assistant-actions">
-					<button id="new-agent-conversation" class="button button-primary" type="button">
-						Iniciar nueva conversacion
-					</button>
-					<a class="button" href="{{page_path 'new_request'}}">
-						Crear ticket nuevo
-					</a>
-				</div>
-			</div>
-
-			<div class="agent-assistant-widget-wrapper">
-				<div id="new-request-agent-widget" aria-label="Widget de asistencia con IA"></div>
+				<section class="agent-panel agent-panel-messages" aria-label="Panel de mensajes">
+					<div class="agent-panel-header">
+						<h2>Asistente IA</h2>
+						<p>Escribe tu consulta y, si lo necesitas, continua con un ticket.</p>
+					</div>
+					<div id="messages-sidebar" class="agent-panel-body" aria-label="Conversacion seleccionada"></div>
+				</section>
 			</div>
 		</div>
 	</div>
 </div>
 
 <style>
+:root {
+		--agent-surface: #ffffff;
+		--agent-border: #d9dee3;
+		--agent-text: #1f2a35;
+		--agent-muted: #5b6b78;
+		--agent-shadow: 0 18px 40px rgba(26, 39, 57, 0.12);
+	}
+
+  div#main-content.form {
+  	max-width: 100%;
+  }
+  
 	.page-intro {
 		margin-bottom: 1.5rem;
+		color: var(--agent-muted);
+	}
+
+	.agent-assistant-shell {
+		padding: 1rem;
+		border-radius: 16px;
+		background:
+			radial-gradient(circle at top right, rgba(179, 0, 51, 0.1), rgba(179, 0, 51, 0) 35%),
+			linear-gradient(145deg, #f6f8fa 0%, #eef2f6 100%);
 	}
 
 	.agent-assistant-layout {
 		display: grid;
-		gap: 1rem;
-		grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+		gap: 1.25rem;
+		grid-template-columns: minmax(240px, 25%) minmax(0, 75%);
 	}
 
-	.agent-assistant-panel,
-	.agent-assistant-widget-wrapper {
-		border: 1px solid var(--hc-border-color, #d8dcde);
-		border-radius: 8px;
-		background: #fff;
-		padding: 1rem;
-	}
-
-	.agent-assistant-panel h2 {
-		margin-top: 0;
-	}
-
-	.agent-assistant-actions {
+	.agent-panel {
 		display: flex;
 		flex-direction: column;
-		gap: 0.75rem;
-		margin-top: 1rem;
+		border: 1px solid var(--agent-border);
+		border-radius: 14px;
+		background: var(--agent-surface);
+		padding: 1rem;
+		box-shadow: var(--agent-shadow);
+		min-height: 700px;
 	}
 
-	#new-request-agent-widget {
-		min-height: 640px;
+	.agent-panel-header {
+		padding-bottom: 0.9rem;
+		margin-bottom: 0.9rem;
+		border-bottom: 1px solid #e7ebef;
+	}
+
+	.agent-panel-header h2 {
+		margin: 0;
+		font-size: 1.2rem;
+		line-height: 1.2;
+		color: var(--agent-text);
+	}
+
+	.agent-panel-header p {
+		margin: 0.4rem 0 0;
+		font-size: 0.93rem;
+		color: var(--agent-muted);
+	}
+
+	.agent-panel-body {
+		flex: 1;
+		min-height: 0;
+	}
+
+	.agent-panel-list {
+		background: linear-gradient(180deg, #ffffff 0%, #fafbfd 100%);
+	}
+
+	.agent-panel-messages {
+		background: linear-gradient(180deg, #ffffff 0%, #f8f9fb 100%);
 	}
 
 	@media (max-width: 991px) {
+		.agent-assistant-shell {
+			padding: 0.75rem;
+		}
+
 		.agent-assistant-layout {
 			grid-template-columns: 1fr;
 		}
 
-		#new-request-agent-widget {
+		.agent-panel {
 			min-height: 560px;
 		}
 	}
 </style>
+  <!-- Start of uclm Zendesk Widget script -->
+  <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=51ec8609-a805-4335-b157-2872df3101db"> </script>
+  <!-- End of uclm Zendesk Widget script -->
+  
 
 <script>
-	window.zEMessenger = window.zEMessenger || {};
-	window.zEMessenger.autorender = false;
+window.zEMessenger = {
+  autorender: false
+}
 </script>
 
 <script>
-	(function () {
-		const widgetSelector = "#new-request-agent-widget";
-		const startConversationButton = document.getElementById("new-agent-conversation");
-		const maxWaitCycles = 60;
-		let waitCycles = 0;
+	
+zE('messenger', 'render', {
+  mode: 'embedded',
+  conversationList: {
+    targetElement: '#conversation-sidebar',
+  },
+  messageLog: {
+    targetElement: '#messages-sidebar',
+  },
+});
 
-		function hasContainer() {
-			return Boolean(document.querySelector(widgetSelector));
-		}
+zE('messenger:set', 'customization', {
+    common: {
+      hideHeader: true,
+  		contentScale: 100
+    },
+    conversationList: {
+      hideHeader: true,
+      hideNewConversationButton: false
+    },
+    messageLog: {
+      hideHeader: true
+    }
+});
 
-		function renderEmbeddedWidget() {
-			if (!hasContainer() || typeof window.zE !== "function") {
-				return false;
-			}
-
-			window.zE("messenger", "render", {
-				mode: "embedded",
-				widget: {
-					targetElement: widgetSelector
-				}
-			});
-
-			return true;
-		}
-
-		if (!renderEmbeddedWidget()) {
-			const waitForZendesk = setInterval(function () {
-				waitCycles += 1;
-
-				if (renderEmbeddedWidget() || waitCycles >= maxWaitCycles) {
-					clearInterval(waitForZendesk);
-				}
-			}, 250);
-		}
-
-		if (startConversationButton) {
-			startConversationButton.addEventListener("click", function () {
-				if (typeof window.zE !== "function") {
-					return;
-				}
-
-				window.zE("messenger:ui", "newConversation", {
-					metadata: {
-						source: "new_request_agent",
-						locale: {{json help_center.locale}},
-						userRole: {{json user.role}}
-					}
-				});
-			});
-		}
-	})();
+zE('messenger:ui', 'newConversation', {
+    displayName: 'Nueva conversación',
+    iconUrl: 'https://www.uclm.es/images/favicon/favicon.ico',
+    metadata: {
+        source: window.location
+    }
+});  
 </script>
