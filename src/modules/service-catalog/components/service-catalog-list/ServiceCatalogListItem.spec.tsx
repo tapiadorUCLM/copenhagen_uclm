@@ -1,6 +1,6 @@
-import { render, screen } from "@testing-library/react";
-import { ThemeProvider } from "styled-components";
-import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
+import { render, testTheme } from "../../../test/render";
+import { screen } from "@testing-library/react";
+import { getColor } from "@zendeskgarden/react-theming";
 import ServiceCatalogListItem from "./ServiceCatalogListItem";
 import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 import { userEvent } from "@testing-library/user-event";
@@ -11,19 +11,6 @@ jest.mock("@zendeskgarden/svg-icons/src/16/shapes-fill.svg", () => {
   };
 });
 
-const theme = {
-  ...DEFAULT_THEME,
-  colors: {
-    ...DEFAULT_THEME.colors,
-    foreground: "#ff0000",
-    primaryHue: "#0000ff",
-  },
-};
-
-const renderWithTheme = (component: React.ReactElement) => {
-  return render(<ThemeProvider theme={theme}>{component}</ThemeProvider>);
-};
-
 describe("ServiceCatalogListItem", () => {
   const mockServiceItem: ServiceCatalogItem = {
     id: 1989,
@@ -31,9 +18,11 @@ describe("ServiceCatalogListItem", () => {
     description: "This is a keyboard &quot;from&quot; Atl Nacional",
     form_id: 456,
     thumbnail_url: "",
+    categories: [],
     custom_object_fields: {
       "standard::asset_option": "",
       "standard::asset_type_option": "",
+      "standard::attachment_option": "",
     },
   };
 
@@ -43,7 +32,7 @@ describe("ServiceCatalogListItem", () => {
 
   describe("Rendering", () => {
     it("should render the service item with correct content", () => {
-      renderWithTheme(
+      render(
         <ServiceCatalogListItem
           serviceItem={mockServiceItem}
           helpCenterPath={mockHelpCenterPath}
@@ -58,7 +47,7 @@ describe("ServiceCatalogListItem", () => {
     });
 
     it("should render as a link with correct href", () => {
-      renderWithTheme(
+      render(
         <ServiceCatalogListItem
           serviceItem={mockServiceItem}
           helpCenterPath={mockHelpCenterPath}
@@ -74,21 +63,24 @@ describe("ServiceCatalogListItem", () => {
     });
 
     it("should use the theme foreground color as text color", () => {
-      renderWithTheme(
+      render(
         <ServiceCatalogListItem
           serviceItem={mockServiceItem}
           helpCenterPath={mockHelpCenterPath}
         />
       );
 
-      const itemContainer = screen.getByTestId(
-        "service-catalog-list-item-container"
+      const linkElement = screen.getByRole("link");
+      expect(linkElement).toHaveStyle(
+        `color: ${getColor({
+          theme: testTheme,
+          variable: "foreground.default",
+        })}`
       );
-      expect(itemContainer).toHaveStyle(`color: ${theme.colors.foreground}`);
     });
 
     it("should use primaryHue as card border color on hover", async () => {
-      renderWithTheme(
+      render(
         <ServiceCatalogListItem
           serviceItem={mockServiceItem}
           helpCenterPath={mockHelpCenterPath}
@@ -96,18 +88,16 @@ describe("ServiceCatalogListItem", () => {
       );
 
       const user = userEvent.setup();
-      const itemContainer = screen.getByTestId(
-        "service-catalog-list-item-container"
-      );
-      const defaultBorderColor = DEFAULT_THEME.palette.grey?.[300];
+      const linkElement = screen.getByRole("link");
+      const defaultBorderColor = testTheme.palette.grey?.[300];
 
       expect(defaultBorderColor).toBeTruthy();
-      expect(itemContainer).toHaveStyle(`border-color: ${defaultBorderColor}`);
+      expect(linkElement).toHaveStyle(`border-color: ${defaultBorderColor}`);
 
-      await user.hover(itemContainer);
+      await user.hover(linkElement);
 
-      expect(itemContainer).toHaveStyle(
-        `border-color: ${theme.colors.primaryHue}`
+      expect(linkElement).toHaveStyle(
+        `border-color: ${testTheme.colors.primaryHue}`
       );
     });
   });

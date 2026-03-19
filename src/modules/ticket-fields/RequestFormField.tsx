@@ -28,6 +28,7 @@ interface RequestFormFieldProps {
     value: TicketFieldObject["value"]
   ) => void;
   buildLookupFieldOptions?: LookupFieldProps["buildLookupFieldOptions"];
+  renderLookupFieldOption?: LookupFieldProps["renderOption"];
 }
 
 export const RequestFormField = ({
@@ -44,6 +45,7 @@ export const RequestFormField = ({
   handleDueDateChange,
   handleChange,
   buildLookupFieldOptions,
+  renderLookupFieldOption,
 }: RequestFormFieldProps) => {
   const serviceAreaIndex = visibleFields.findIndex(
     (f) => f.label === "Área de Servicios"
@@ -150,13 +152,15 @@ export const RequestFormField = ({
           field={field}
           userId={userId}
           organizationId={
-            organizationField !== null
-              ? (organizationField?.value as string)
+            organizationField != null
+              ? (organizationField.value as string)
               : defaultOrganizationId
           }
+          brandId={brandId}
           visibleFields={visibleFields}
           onChange={(value) => handleChange(field, value)}
           buildLookupFieldOptions={buildLookupFieldOptions}
+          renderOption={renderLookupFieldOption}
         />
       );
     default:
