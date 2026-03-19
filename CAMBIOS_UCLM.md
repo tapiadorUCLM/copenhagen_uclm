@@ -2,6 +2,71 @@
 
 Este documento registra todos los cambios realizados en el tema de Zendesk para la UCLM antes de cada subida a GitHub.
 
+## Versión 4.32.2.1 (19 marzo 2026)
+
+### Ajustes en páginas personalizadas de solicitud
+- **Archivo**: `templates/custom_pages/new_request_agent.hbs`
+  - Actualizados los breadcrumbs de la página para reflejar de forma explícita la ruta de acceso al asistente.
+  - Título principal cambiado de **"Enviar una solicitud"** a **"Agente de IA"** para diferenciar esta vista del formulario estándar.
+  - Se mantiene el texto introductorio orientado al flujo conversacional con derivación a ticket cuando sea necesario.
+
+- **Archivo**: `templates/custom_pages/new_request_custom.hbs`
+  - Añadidos breadcrumbs propios en la cabecera para mantener consistencia de navegación con el resto de páginas personalizadas.
+  - Simplificado el texto introductorio eliminando la referencia al asistente de IA, de modo que esta página quede centrada en la selección directa de área de gestión.
+
+### Ajustes de layout
+- **Archivo**: `style.css`
+  - En escritorio, `.category-content` pasa de ocupar el `80%` al `100%` del ancho disponible.
+  - Este cambio elimina la reserva lateral en la maquetación de categoría y permite que el contenido principal use todo el ancho de la columna.
+
+### Versionado
+- **Archivo**: `manifest.json`
+  - Versión del tema actualizada de `4.32.2` a `4.32.2.1`.
+
+### Notas técnicas
+- Esta versión documenta ajustes locales de UCLM sobre la base upstream `4.32.2`.
+- No se han añadido cambios funcionales en módulos React ni en la lógica del formulario estándar de Zendesk; los cambios se limitan a plantillas personalizadas, CSS compilado y versionado.
+
+---
+
+## Versión 4.32.2 (19 marzo 2026) — Sincronización con upstream Copenhagen Theme
+
+### Cambios incorporados del upstream oficial de Zendesk (v4.32.2)
+- **Archivo**: `src/modules/service-catalog/components/service-catalog-list/ServiceCatalogListItem.tsx`
+  - Separación del componente de enlace (`ItemLink`) del contenedor de tarjeta (`ItemContainer`):
+    - El contenedor pasa a ser un `<div>` neutral; el enlace queda como elemento semántico `<a>` independiente.
+    - Mejora la accesibilidad y el comportamiento del elemento interactivo.
+  - Eliminado el renderizado directo de HTML en la descripción (`dangerouslySetInnerHTML`):
+    - Se añade la función `decodeToText()` para extraer texto plano desde HTML usando un `<div>` temporal.
+    - Título y descripción se limpian de etiquetas HTML y se memoizan con `useMemo` antes de renderizarse.
+    - Esto elimina la posibilidad de que etiquetas HTML en el nombre o descripción del servicio se rendericen como marcado.
+  - Mejora de seguridad: la descripción ya no inyecta HTML arbitrario en el DOM.
+
+- **Archivo**: `src/modules/service-catalog/components/service-catalog-list/ServiceCatalogList.tsx`
+  - Título de categoría (`CategoryHeading`) con truncado por ellipsis:
+    - Añadidas propiedades `white-space: nowrap`, `overflow: hidden`, `text-overflow: ellipsis` y `max-width: 600px`.
+    - Evita que cabeceras de categoría largas desborden el layout.
+
+- **Archivo**: `src/modules/service-catalog/components/service-catalog-list/ServiceCatalogListItem.spec.tsx`
+  - Tests actualizados para reflejar el nuevo elemento de referencia (`<a>` por rol `"link"`) en lugar del contenedor por `data-testid`.
+
+- **Archivo**: `assets/service-catalog-bundle.js`
+  - Bundle regenerado con los cambios anteriores de TypeScript compilados.
+
+- **Archivo**: `manifest.json`
+  - Versión del tema actualizada a `4.32.2`.
+
+- **Archivo**: `CHANGELOG.md`
+  - Entrada de versión añadida por el bot de release del upstream.
+
+### Notas técnicas
+- Sincronización realizada mediante `git merge upstream/master`.
+- Los cambios provienen exclusivamente del repositorio oficial de Zendesk Copenhagen Theme (PR #781, commit `73afe17`).
+- No hay conflictos con las personalizaciones UCLM en estos archivos.
+- El cambio en `ServiceCatalogListItem` corrige una vulnerabilidad potencial de XSS al evitar renderizado de HTML sin sanitizar.
+
+---
+
 ## Versión 4.13.4.2 (18 marzo 2026)
 
 ### Refinado funcional y visual de la página de agente IA
