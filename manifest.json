@@ -1,7 +1,7 @@
 {
   "name": "Copenhagen",
   "author": "Zendesk",
-  "version": "4.41.0",
+  "version": "4.41.0.1",
   "api_version": 4,
   "default_locale": "es-es",
   "settings": [
@@ -363,6 +363,20 @@
           "description": "home_notice_button_url_description",
           "label": "home_notice_button_url_label",
           "value": ""
+        },
+        {
+          "identifier": "show_popular_searches",
+          "type": "checkbox",
+          "description": "show_popular_searches_description",
+          "label": "show_popular_searches_label",
+          "value": true
+        },
+        {
+          "identifier": "popular_searches_list",
+          "type": "text",
+          "description": "popular_searches_list_description",
+          "label": "popular_searches_list_label",
+          "value": "fechas de la pau,resultados de la pau,matrícula universitaria,calendario académico,contacto universidad"
         }
       ]
     },
@@ -381,7 +395,7 @@
           "type": "checkbox",
           "description": "article_toc_description",
           "label": "article_toc_label",
-          "value": false
+          "value": true
         },
         {
           "identifier": "show_article_author",
@@ -478,7 +492,7 @@
           "type": "checkbox",
           "description": "request_list_beta_description",
           "label": "request_list_beta_label",
-          "value": false
+          "value": true
         }
       ]
     },

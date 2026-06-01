@@ -3,6 +3,7 @@
 <section id="main-content" class="section hero">
   <div class="hero-inner">
     <h1>¿En qué podemos ayudarte?</h1>
+    <h2>Encuentra artículos, guías y documentación de la Universidad de Castilla-La Mancha para resolver trámites, servicios y consultas frecuentes.</h2>
   </div>
   <div class="hero-inner">
     <h2 class="visibility-hidden">{{ t 'search' }}</h2>
@@ -11,6 +12,12 @@
       <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
     </svg>
     {{search submit=false instant=settings.instant_search class='search search-full'}}
+    {{#if settings.show_popular_searches}}
+      <div class="popular-searches js-popular-searches" data-popular-searches="{{settings.popular_searches_list}}" hidden>
+        <span class="popular-searches__label">Búsquedas populares:</span>
+        <ul class="popular-searches__list js-popular-searches-list" aria-label="Búsquedas populares"></ul>
+      </div>
+    {{/if}}
   </div>
 </section>
 

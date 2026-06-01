@@ -2,6 +2,41 @@
 
 Este documento registra todos los cambios realizados en el tema de Zendesk para la UCLM antes de cada subida a GitHub.
 
+## Versión 4.41.0.1 (1 junio 2026)
+
+### Búsquedas populares en la portada
+- **Archivo**: `manifest.json`
+  - Añadidas dos nuevas variables dentro de `home_page_group_label`:
+    - `show_popular_searches` (checkbox) para activar o desactivar la funcionalidad.
+    - `popular_searches_list` (texto) para definir búsquedas separadas por comas.
+  - Configurados valores para activación y contenido inicial de búsquedas populares.
+
+- **Archivo**: `templates/home_page.hbs`
+  - Añadido un bloque debajo del buscador principal con la etiqueta **"Búsquedas populares:"**.
+  - El bloque se renderiza de forma condicional cuando `show_popular_searches` está activo.
+  - Se incluye un contenedor para pintar dinámicamente cada término como pildora enlazable.
+
+- **Archivo**: `src/popularSearches.js`
+  - Nuevo módulo JavaScript para:
+    - Parsear la cadena de búsquedas separadas por comas.
+    - Limpiar espacios y descartar entradas vacías.
+    - Generar cada pildora como enlace a `https://soporte.uclm.es/hc/es/search?query=...`.
+
+- **Archivo**: `src/index.js`
+  - Importado el nuevo módulo `popularSearches` para ejecutar el render en carga de página.
+
+- **Archivo**: `styles/_hero.scss`
+  - Añadidos estilos de presentación para la línea de búsquedas populares y las etiquetas tipo pildora.
+  - Definidos estados visuales de hover/focus para mejorar usabilidad y accesibilidad.
+
+- **Archivo**: `translations.yml`
+  - Añadidas etiquetas y descripciones de configuración para los dos nuevos ajustes del tema.
+
+### Notas técnicas
+- La funcionalidad queda desacoplada de la plantilla mediante renderizado en cliente.
+- Cada búsqueda popular realiza navegación directa a resultados de búsqueda con la query codificada.
+- El bloque no se muestra si no hay términos válidos tras el parseo de la lista.
+
 ## Versión 4.41.0 (14 mayo 2026) — Sincronización con upstream Copenhagen Theme
 
 ### Ordenación en el catálogo de servicios

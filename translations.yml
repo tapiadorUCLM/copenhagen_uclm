@@ -289,6 +289,26 @@ parts:
       screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
       value: "Dirección web (URL) a la que dirige el botón al hacer clic"
   - translation:
+      key: "txt.help_center_copenhagen_theme.show_popular_searches_label"
+      title: "Label for the popular searches visibility setting"
+      screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
+      value: "Activar búsquedas populares"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.show_popular_searches_description"
+      title: "Description for the popular searches visibility setting"
+      screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
+      value: "Muestra una fila de etiquetas de búsquedas frecuentes debajo del buscador"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.popular_searches_list_label"
+      title: "Label for the popular searches list setting"
+      screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
+      value: "Búsquedas populares (separadas por comas)"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.popular_searches_list_description"
+      title: "Description for the popular searches list setting"
+      screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
+      value: "Introduce una o varias búsquedas separadas por comas; cada una se mostrará como una etiqueta"
+  - translation:
       key: "txt.help_center_copenhagen_theme.article_page_group_label"
       title: "Label for the article page elements settings group"
       screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
