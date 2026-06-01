@@ -2,14 +2,14 @@ const popularSearchesSelector = ".js-popular-searches";
 const popularSearchesListSelector = ".js-popular-searches-list";
 const searchUrlBase = "https://soporte.uclm.es/hc/es/search?query=";
 
-function normalizeSearchTerms(rawTerms) {
+export function normalizeSearchTerms(rawTerms) {
   return rawTerms
     .split(",")
     .map((term) => term.trim())
     .filter((term) => term.length > 0);
 }
 
-function buildPillElement(term) {
+export function buildPillElement(term) {
   const listItem = document.createElement("li");
   const link = document.createElement("a");
 
@@ -22,7 +22,7 @@ function buildPillElement(term) {
   return listItem;
 }
 
-function renderPopularSearches(container) {
+export function renderPopularSearches(container) {
   const rawTerms = container.getAttribute("data-popular-searches") || "";
   const terms = normalizeSearchTerms(rawTerms);
   const list = container.querySelector(popularSearchesListSelector);
@@ -31,6 +31,8 @@ function renderPopularSearches(container) {
     return;
   }
 
+  list.innerHTML = "";
+
   terms.forEach((term) => {
     list.appendChild(buildPillElement(term));
   });
@@ -38,9 +40,15 @@ function renderPopularSearches(container) {
   container.hidden = false;
 }
 
-window.addEventListener("DOMContentLoaded", () => {
+export function initPopularSearches() {
   const containers = [...document.querySelectorAll(popularSearchesSelector)];
   containers.forEach((container) => {
     renderPopularSearches(container);
   });
-});
+}
+
+if (document.readyState === "loading") {
+  window.addEventListener("DOMContentLoaded", initPopularSearches);
+} else {
+  initPopularSearches();
+}
