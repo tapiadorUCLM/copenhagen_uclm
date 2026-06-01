@@ -95,5 +95,9 @@
   "home_notice_button_url_label": "URL del botón del aviso en la página principal",
   "home_notice_button_url_description": "La URL a la que se redirige al hacer clic en el botón del aviso de la página principal para los usuarios que no han iniciado sesión.",
   "article_toc_description": "Mostrar la tabla de contenido del artículo",
-  "article_toc_label": "Tabla de contenido del artículo"
+  "article_toc_label": "Tabla de contenido del artículo",
+  "show_popular_searches_label": "Activar búsquedas populares",
+  "show_popular_searches_description": "Muestra una fila de etiquetas de búsquedas frecuentes debajo del buscador",
+  "popular_searches_list_label": "Búsquedas populares (separadas por comas)",
+  "popular_searches_list_description": "Introduce una o varias búsquedas separadas por comas; cada una se mostrará como una etiqueta"
 }
