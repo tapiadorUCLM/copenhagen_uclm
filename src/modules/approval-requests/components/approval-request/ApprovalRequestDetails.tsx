@@ -7,8 +7,10 @@ import { Grid } from "@zendeskgarden/react-grid";
 import type { ApprovalRequest } from "../../types";
 import ApprovalStatusTag from "./ApprovalStatusTag";
 import { formatApprovalRequestDate } from "../../utils";
-import { APPROVAL_REQUEST_STATES, ORIGINATION_TYPES } from "../../constants";
+import { APPROVAL_REQUEST_STATES } from "../../constants";
 import ApprovalRequestPreviousDecision from "./ApprovalRequestPreviousDecision";
+import { getSentByLabel } from "../../getSentByLabel";
+import { getDecisionOriginLabel } from "../../getDecisionOriginLabel";
 
 const Container = styled(Grid)`
   padding: ${(props) => props.theme.space.base * 6}px; /* 24px */
@@ -77,6 +79,21 @@ function ApprovalRequestDetails({
   const shouldShowPreviousDecision =
     approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN &&
     approvalRequest.decisions.length > 0;
+
+  const formattedDecidedAt = approvalRequest.decided_at
+    ? formatApprovalRequestDate(approvalRequest.decided_at, baseLocale)
+    : "";
+
+  // The `origination_type` field on decisions is only present when arturo `approvals_slack_notifications` is enabled
+  const decisionOriginLabel =
+    approvalRequest.status !== APPROVAL_REQUEST_STATES.WITHDRAWN
+      ? getDecisionOriginLabel(
+          approvalRequest.decisions[0]?.origination_type,
+          formattedDecidedAt,
+          t
+        )
+      : "";
+
   return (
     <Container>
       <ApprovalRequestHeader isBold>
@@ -95,14 +112,7 @@ function ApprovalRequestDetails({
           </FieldLabel>
         </Grid.Col>
         <Grid.Col size={8}>
-          <WrappedText>
-            {approvalRequest.origination_type === ORIGINATION_TYPES.ACTION_FLOW
-              ? t(
-                  "approval-requests.request.approval-request-details.sent-by-action-flow",
-                  "Action flow"
-                )
-              : approvalRequest.created_by_user.name}
-          </WrappedText>
+          <WrappedText>{getSentByLabel(approvalRequest, t)}</WrappedText>
         </Grid.Col>
       </DetailRow>
       <DetailRow>
@@ -182,12 +192,9 @@ function ApprovalRequestDetails({
             </FieldLabel>
           </Grid.Col>
           <Grid.Col size={8}>
-            <MD>
-              {formatApprovalRequestDate(
-                approvalRequest.decided_at,
-                baseLocale
-              )}
-            </MD>
+            <WrappedText>
+              {decisionOriginLabel || formattedDecidedAt}
+            </WrappedText>
           </Grid.Col>
         </DetailRow>
       )}
