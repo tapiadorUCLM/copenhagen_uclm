@@ -2,6 +2,40 @@
 
 Este documento registra todos los cambios realizados en el tema de Zendesk para la UCLM antes de cada subida a GitHub.
 
+## Versión 4.41.0 (14 mayo 2026) — Sincronización con upstream Copenhagen Theme
+
+### Ordenación en el catálogo de servicios
+- **Archivo**: `src/modules/service-catalog/components/service-catalog-list/ServiceCatalogList.tsx`
+  - Añadida la capacidad de ordenar los elementos del catálogo de servicios desde la propia interfaz.
+  - Se incorpora un menú de ordenación para cambiar el criterio de visualización sin abandonar la lista.
+
+- **Archivo**: `src/modules/service-catalog/components/service-catalog-list/SortMenu.tsx`
+  - Nuevo componente específico para exponer las opciones de ordenación al usuario.
+  - Se añaden tests asociados para validar el comportamiento del menú.
+
+- **Archivo**: `src/modules/service-catalog/components/service-catalog-list/LoadingState.tsx`
+  - Ajustes en el estado de carga para acompañar el nuevo flujo de listado ordenable.
+
+- **Archivo**: `src/modules/service-catalog/components/service-catalog-list/ServiceCatalogListItemSkeleton.tsx`
+  - Nuevo esqueleto visual para mantener una carga consistente mientras se prepara el listado.
+
+- **Archivo**: `src/modules/service-catalog/hooks/useServiceCatalogItems.tsx`
+  - Actualizada la obtención de elementos para soportar el nuevo ordenamiento.
+
+- **Archivo**: `src/modules/service-catalog/translations/en-us.yml`
+  - Añadidas o actualizadas cadenas de texto para las opciones del menú de ordenación.
+
+### Versionado y compilación
+- **Archivo**: `manifest.json`
+  - Versión del tema actualizada a `4.41.0`.
+
+- **Archivo**: `assets/service-catalog-bundle.js`
+  - Bundle regenerado con los cambios del catálogo de servicios compilados.
+
+### Notas técnicas
+- Esta versión corresponde a la sincronización con el release upstream `4.41.0`.
+- El cambio funcional principal es la ordenación de servicios; el resto son ajustes de soporte, pruebas y recompilación de assets.
+
 ## Versión 4.32.2.1 (19 marzo 2026)
 
 ### Ajustes en páginas personalizadas de solicitud
