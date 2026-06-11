@@ -1,3 +1,36 @@
+# [4.42.0](https://github.com/zendesk/copenhagen_theme/compare/v4.41.3...v4.42.0) (2026-06-09)
+
+
+### Features
+
+* add translation to attachments label in service catalog ([bbef73f](https://github.com/zendesk/copenhagen_theme/commit/bbef73f59dfa789ce55c51d077acb815a4df2362))
+
+## [4.41.3](https://github.com/zendesk/copenhagen_theme/compare/v4.41.2...v4.41.3) (2026-06-08)
+
+
+### Bug Fixes
+
+* update styling for wysiwyg resize ([71be4b9](https://github.com/zendesk/copenhagen_theme/commit/71be4b9c2249e7b937f913c2181ea275fdfc3aed))
+
+## [4.41.2](https://github.com/zendesk/copenhagen_theme/compare/v4.41.1...v4.41.2) (2026-06-03)
+
+
+### Bug Fixes
+
+* fix lodash transitive dependency ([5f5779e](https://github.com/zendesk/copenhagen_theme/commit/5f5779e0690fa3736bef270b2c99b6999824400f))
+* fix transitive dependency for handlebars ([72fc29d](https://github.com/zendesk/copenhagen_theme/commit/72fc29d23a89183c75b276ed791fc58868a8d792))
+* fix transitive dependency for picomatch and tar ([19c2b59](https://github.com/zendesk/copenhagen_theme/commit/19c2b597cb499fc5cff82384aaf601c180d22ca1))
+* update commitlint version ([fc2945a](https://github.com/zendesk/copenhagen_theme/commit/fc2945ad2240928db5f99545470430a613961316))
+* update dompurify version ([19bdc3b](https://github.com/zendesk/copenhagen_theme/commit/19bdc3b1603661702575878462b1a7aa94dfb94a))
+* use yarn set resolutions for dependency issues ([b40fe40](https://github.com/zendesk/copenhagen_theme/commit/b40fe4000ff6385a4c9d89c3401e5884cd92db5c))
+
+## [4.41.1](https://github.com/zendesk/copenhagen_theme/compare/v4.41.0...v4.41.1) (2026-06-02)
+
+
+### Bug Fixes
+
+* **ticket-fields:** show selected label for nested dropdown values ([12c23f0](https://github.com/zendesk/copenhagen_theme/commit/12c23f010b46366c31fbbccce29646623f9e954c))
+
 # [4.41.0](https://github.com/zendesk/copenhagen_theme/compare/v4.40.0...v4.41.0) (2026-05-14)
 
 
