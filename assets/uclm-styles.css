@@ -93,6 +93,10 @@
   content: '\f7d9'; /* fa-tools */
 }
 
+.request-block:has(.fa-briefcase)::before {
+  content: '\f0b1'; /* fa-briefcase */
+}
+
 .request-block-icon {
   display: none; /* Ocultar el icono inline, usamos el ::before */
 }

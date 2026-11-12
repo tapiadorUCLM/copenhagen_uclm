@@ -535,3 +535,5 @@ Este documento registra todos los cambios realizados en el tema de Zendesk para 
 - **4.13.2.3** (12/11/2025) - Plantilla de correo electrónico personalizada con branding UCLM
 - **4.13.2.2** (11/11/2025) - Google Fonts + nuevas opciones tipográficas (Montserrat/Roboto) + grid 3 columnas en escritorio
 - **4.13.2.1** (11/11/2025) - Setup inicial UCLM + página selector de solicitudes + estilos personalizados
+
+4.51.5 --Creamos una solicitud de formuario para el cipe en new_request_custom
